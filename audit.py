@@ -95,7 +95,7 @@ def clear_console()-> None:
     # For Windows
     if os.name == 'nt':
         _ = os.system('cls')
-    # For macOS and Linux (os.name: 'posix')
+    # For macOS and Linux
     else:
         _ = os.system('clear')
 
@@ -131,7 +131,7 @@ root.title("File Selection for Audit")
 style = ttk.Style()
 style.theme_use(
     "alt"
-)  # You can experiment with different themes like 'alt', 'default', 'classic', 'clam', etc.
+)
 
 local_file_var = tk.StringVar()
 national_file_var = tk.StringVar()
