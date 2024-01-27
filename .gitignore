@@ -1,0 +1,4 @@
+.venv
+*ipynb
+*.xlsx
+*.csv
