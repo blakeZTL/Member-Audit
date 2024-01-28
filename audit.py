@@ -11,8 +11,6 @@ NATIONAL_SCD = "Service Computation Date"
 
 
 def process_audit(local_df: pd.DataFrame, national_df: pd.DataFrame) -> None:
-    local_df.columns = local_df.iloc[0]
-    local_df = local_df[1:]
 
     def format_date(dt: pd.Timestamp) -> str:
         if pd.notna(dt):
@@ -86,7 +84,7 @@ def process_audit(local_df: pd.DataFrame, national_df: pd.DataFrame) -> None:
 
 def select_file(file_var: tk.StringVar, label: ttk.Label)-> None:
     filename = filedialog.askopenfilename(
-        filetypes=[("XLSX Files", "*.xlsx"), ("CSV Files", "*.csv")]
+        filetypes=[("CSV Files", "*.csv")]
     )
     file_var.set(filename)
     label.config(text=filename)
@@ -95,9 +93,6 @@ def clear_console()-> None:
     # For Windows
     if os.name == 'nt':
         _ = os.system('cls')
-    # For macOS and Linux
-    else:
-        _ = os.system('clear')
 
 
 def audit()-> None:
@@ -107,7 +102,7 @@ def audit()-> None:
         if local_file and national_file:    
             clear_console()
             print("\nReading files...")
-            local_df = pd.read_excel(local_file)
+            local_df = pd.read_csv(local_file)
             national_df = pd.read_csv(national_file)
             process_audit(local_df, national_df)
             print("\nAudit completed successfully.")
