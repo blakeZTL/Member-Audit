@@ -14,7 +14,7 @@ def process_audit(local_df: pd.DataFrame, national_df: pd.DataFrame) -> None:
 
     def format_date(dt: pd.Timestamp) -> str:
         if pd.notna(dt):
-            return dt.strftime("%m/%d/%Y").lstrip("0").replace("/0", "/")
+            return dt.split(" ")[0]
         else:
             return dt
 
